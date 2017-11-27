@@ -89,8 +89,8 @@
     "password": "test"
   },
   "daemon": {
-    "host": "127.0.0.1",
-    "port": 18081
+    "host": "electroneumd",
+    "port": 26968
   },
   "wallet": {
     "host": "127.0.0.1",

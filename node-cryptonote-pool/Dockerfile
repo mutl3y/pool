@@ -22,12 +22,12 @@ RUN apt-get install -y libssl-dev libboost-all-dev
 # install electroneum pool
 RUN \
   cd /opt/electroneum-pool \
-  && git clone https://github.com/sunscreen/node-cryptonote-pool.git pool
-RUN cd pool \
+  && git clone https://github.com/mutl3y/node-cryptonote-pool.git
+RUN cd node-cryptonote-pool \
   && npm install -g n
-COPY config.json /opt/electroneum-pool/pool/config.json
- RUN  cd /opt/electroneum-pool/pool &&  n 0.10.36 \
+COPY config.json /opt/electroneum-pool/node-cryptonote-pool/config.json
+ RUN  cd /opt/electroneum-pool/node-cryptonote-pool &&  n 0.10.36 \
   && npm update
 
-WORKDIR /opt/electroneum-pool/pool/
+WORKDIR /opt/electroneum-pool/node-cryptonote-pool/
 CMD [ "/usr/local/bin/node", "init.js"]

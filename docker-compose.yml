@@ -1,4 +1,4 @@
-version: '3'
+version: '3.2'
 services:
   redis:
     environment:
@@ -9,10 +9,29 @@ services:
     restart: always
     volumes:
       - './redis:/data'
+
+  electroneumd:
+    build: electroneumd/.
+    image: 'electroneumd:latest'
+    restart: always
+    ports:
+      - "26968:26968"
+    volumes:
+      - type: volume
+        source: wallet
+        target: /wallet
+    stdin_open: true
+    deploy:
+      mode: replicated
+      replicas: 2
+      endpoint_mode: vip
+
   node-cryptonote-pool:
-    build: .
+    build: node-cryptonote-pool/.
+    image: 'node-cryponight-pool:latest'
     links:
       - redis
+      - electroneumd
     ports:
       - "8080:80"
       - "3333:3333"
@@ -21,4 +40,12 @@ services:
       - "3256:3256"
       - "8336:8336"
     restart: always
+    stdin_open: true
+    deploy:
+      mode: replicated
+      replicas: 1
+      endpoint_mode: vip
 
+volumes:
+  wallet:
+  chain:
