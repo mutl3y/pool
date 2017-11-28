@@ -1,6 +1,6 @@
-docker stack rm app
+
 sleep 5
 docker-compose build
 docker stack deploy app --compose-file docker-compose.yml
-bash chainsave.sh &
+bash chainsave.sh
 

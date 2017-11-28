@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
 clear
 row=4
 col=1
@@ -19,8 +18,8 @@ countdown() {
 
 while true
 do
-  clear
-  docker ps |grep electroneumd | awk '{print $1}' | xargs -I [ docker exec  [ /opt/electroneum-pool/electroneumd save
+  clear 
+  docker ps |grep electroneumd | awk '{print $1}' | xargs -I [ docker exec  [ /opt/electroneum-pool/electroneumd save 
   date
   countdown "to next blockchain save"
 done

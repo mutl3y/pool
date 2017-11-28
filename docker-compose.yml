@@ -20,6 +20,11 @@ services:
       - type: volume
         source: wallet
         target: /wallet
+        consistant: true
+      - type: volume
+        source: chain
+        target: /root/.electroneum
+        consistant: true
     stdin_open: true
     deploy:
       mode: replicated

@@ -9,6 +9,7 @@
           </mappings>
           <excludedPaths>
             <excludedPath path="/redis/dump.rdb" />
+            <excludedPath local="true" path="$PROJECT_DIR$/redis/dump.rdb" />
           </excludedPaths>
         </serverdata>
       </paths>
